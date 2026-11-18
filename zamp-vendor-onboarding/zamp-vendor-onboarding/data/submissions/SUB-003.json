@@ -1,0 +1,19 @@
+{
+  "submission_id": "SUB-003",
+  "scenario": "Edge \u2013 GSTIN doesn't belong to the declared PAN",
+  "expected": "Rejected",
+  "legal_name": "Nova Industrial Supplies Pvt Ltd",
+  "gstin": "07AAFCN2290R1ZV",
+  "pan": "AAFCN9921R",
+  "address": "Unit 9, Udyog Vihar Phase 4, Gurugram",
+  "state": "Haryana",
+  "contact_email": "nova.supplies.ind@gmail.com",
+  "bank_account_holder": "Nova Industrial Supplies Pvt Ltd",
+  "bank_account": "38990045671",
+  "ifsc": "SBIN0003344",
+  "documents": {
+    "gst_certificate": "docs/SUB-003_gst.pdf",
+    "bank_proof": "docs/SUB-003_cheque.pdf",
+    "pan_card": "docs/SUB-003_pan.pdf"
+  }
+}

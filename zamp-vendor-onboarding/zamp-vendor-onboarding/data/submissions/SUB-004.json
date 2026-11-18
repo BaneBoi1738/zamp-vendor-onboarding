@@ -1,0 +1,19 @@
+{
+  "submission_id": "SUB-004",
+  "scenario": "Edge \u2013 wrong document uploaded as GST certificate",
+  "expected": "Pending",
+  "legal_name": "Meridian Medical Devices Pvt Ltd",
+  "gstin": "09AAICM1180D1ZN",
+  "pan": "AAICM1180D",
+  "address": "C-12, Sector 63, Noida",
+  "state": "Uttar Pradesh",
+  "contact_email": "vendor.ops@meridianmed.in",
+  "bank_account_holder": "Meridian Medical Devices Pvt Ltd",
+  "bank_account": "1234006677889",
+  "ifsc": "KKBK0004567",
+  "documents": {
+    "gst_certificate": "docs/SUB-004_gst_slot_is_pan.pdf",
+    "bank_proof": "docs/SUB-004_cheque.pdf",
+    "pan_card": "docs/SUB-004_pan.pdf"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "submission_id": "SUB-005",
+  "scenario": "Edge \u2013 bank account already used by another vendor",
+  "expected": "Rejected",
+  "legal_name": "Prism Office Solutions Pvt Ltd",
+  "gstin": "24AAECP6634L1Z6",
+  "pan": "AAECP6634L",
+  "address": "301, Shivalik Plaza, Ahmedabad",
+  "state": "Gujarat",
+  "contact_email": "billing@prismoffice.co.in",
+  "bank_account_holder": "Prism Office Solutions Pvt Ltd",
+  "bank_account": "912010034567890",
+  "ifsc": "UTIB0000456",
+  "documents": {
+    "gst_certificate": "docs/SUB-005_gst.pdf",
+    "bank_proof": "docs/SUB-005_cheque.pdf",
+    "pan_card": "docs/SUB-005_pan.pdf"
+  }
+}

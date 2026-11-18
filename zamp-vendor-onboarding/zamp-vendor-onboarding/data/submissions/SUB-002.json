@@ -1,0 +1,19 @@
+{
+  "submission_id": "SUB-002",
+  "scenario": "Edge \u2013 bank account holder is a different entity",
+  "expected": "Pending",
+  "legal_name": "Greenleaf Packaging Pvt Ltd",
+  "gstin": "29AADCG7315K1ZC",
+  "pan": "AADCG7315K",
+  "address": "No. 18, Peenya Industrial Area, Bengaluru",
+  "state": "Karnataka",
+  "contact_email": "finance@greenleafpack.com",
+  "bank_account_holder": "Greenleaf Packaging Pvt Ltd",
+  "bank_account": "917020078812345",
+  "ifsc": "UTIB0000789",
+  "documents": {
+    "gst_certificate": "docs/SUB-002_gst.pdf",
+    "bank_proof": "docs/SUB-002_cheque.pdf",
+    "pan_card": "docs/SUB-002_pan.pdf"
+  }
+}

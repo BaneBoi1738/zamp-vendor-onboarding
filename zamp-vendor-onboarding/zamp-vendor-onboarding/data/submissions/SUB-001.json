@@ -1,0 +1,19 @@
+{
+  "submission_id": "SUB-001",
+  "scenario": "Happy path \u2013 clean submission",
+  "expected": "Approved",
+  "legal_name": "Sharma Logistics Pvt Ltd",
+  "gstin": "06AAKCS4821P1ZU",
+  "pan": "AAKCS4821P",
+  "address": "Plot 42, Sector 37, Gurugram",
+  "state": "Haryana",
+  "contact_email": "accounts@sharmalogistics.in",
+  "bank_account_holder": "Sharma Logistics Pvt Ltd",
+  "bank_account": "50200041872215",
+  "ifsc": "HDFC0001234",
+  "documents": {
+    "gst_certificate": "docs/SUB-001_gst.pdf",
+    "bank_proof": "docs/SUB-001_cheque.pdf",
+    "pan_card": "docs/SUB-001_pan.pdf"
+  }
+}
