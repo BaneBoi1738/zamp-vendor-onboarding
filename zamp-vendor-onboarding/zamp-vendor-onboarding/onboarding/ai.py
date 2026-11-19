@@ -67,7 +67,7 @@ def extract_document(path: str, slot: str) -> dict:
             with open(path, "rb") as f:
                 b64 = base64.standard_b64encode(f.read()).decode()
             msg = client.messages.create(
-                model=MODEL, max_tokens=800,
+                model=MODEL, max_tokens=3000,
                 messages=[{"role": "user", "content": [
                     {"type": "document", "source": {"type": "base64", "media_type": "application/pdf", "data": b64}},
                     {"type": "text", "text": EXTRACT_PROMPT.format(slot=slot)},
@@ -136,7 +136,7 @@ def draft_message(kind: str, vendor: dict, findings: list[dict]) -> dict:
     if client:
         try:
             prompt = MESSAGE_PROMPTS[kind].format(name=vendor.get("legal_name"), email=vendor.get("contact_email"), issues=issues or "none")
-            msg = client.messages.create(model=MODEL, max_tokens=600, messages=[{"role": "user", "content": prompt}])
+            msg = client.messages.create(model=MODEL, max_tokens=3000, messages=[{"role": "user", "content": prompt}])
             raw = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
             data = json.loads(re.search(r"\{.*\}", raw, re.S).group(0))
             data["method"] = "ai"
