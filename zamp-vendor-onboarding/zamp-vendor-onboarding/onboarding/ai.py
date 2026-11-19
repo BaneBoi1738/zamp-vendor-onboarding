@@ -68,7 +68,7 @@ def extract_document(path: str, slot: str) -> dict:
                     {"type": "text", "text": EXTRACT_PROMPT.format(slot=slot)},
                 ]}],
             )
-            raw = msg.content[0].text
+            raw = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
             data = json.loads(re.search(r"\{.*\}", raw, re.S).group(0))
             data["method"] = "ai"
             return data
@@ -132,7 +132,7 @@ def draft_message(kind: str, vendor: dict, findings: list[dict]) -> dict:
         try:
             prompt = MESSAGE_PROMPTS[kind].format(name=vendor.get("legal_name"), email=vendor.get("contact_email"), issues=issues or "none")
             msg = client.messages.create(model=MODEL, max_tokens=600, messages=[{"role": "user", "content": prompt}])
-            raw = msg.content[0].text
+            raw = "".join(b.text for b in msg.content if getattr(b, "type", "") == "text")
             data = json.loads(re.search(r"\{.*\}", raw, re.S).group(0))
             data["method"] = "ai"
             return data
