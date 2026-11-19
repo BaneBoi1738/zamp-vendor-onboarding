@@ -29,7 +29,7 @@ def gst_certificate(path, legal_name, trade_name, gstin, address, state, reg_dat
             ("7. Type of Registration", "Regular")]
     for k, v in rows:
         c.setFont("Helvetica-Bold", 10); c.drawString(40, y, k); c.setFont("Helvetica", 10); c.drawString(300, y, v); y -= 26
-    c.setFont("Helvetica-Oblique", 9); c.drawString(40, 80, "This is a system generated digitally signed Registration Certificate. (Demo document for case study)")
+    c.setFont("Helvetica-Oblique", 9); c.drawString(40, 80, "This is a system generated digitally signed Registration Certificate.")
     c.save()
 
 def cancelled_cheque(path, bank, branch, holder, account, ifsc):
