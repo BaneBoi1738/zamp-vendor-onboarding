@@ -108,15 +108,13 @@ def stage_read_documents(sub, ctx):
                          "doc_type"))
         else:
             out.append(F("pass", f"{label}: read via {d['method']}", check="doc_type"))
-        if d.get("notes") and d.get("method") == "ai":
-            out.append(F("review", f"AI note on {label}: {d['notes']}", check="doc_ai_note")) if _is_concerning(d["notes"]) else None
+        if d.get("method") == "ai" and d.get("red_flag") is True:
+            # AI returns a structured yes/no flag; we never keyword-match its free text
+            # ("no signs of tampering" would otherwise trip a 'tamper' keyword).
+            out.append(F("review", f"AI flagged {label}: {d.get('notes') or 'possible issue'}", check="doc_ai_flag"))
     ctx["extracted"] = extracted
     ctx["ai_methods"] = sorted({d["method"] for d in extracted.values()})
     return out
-
-
-def _is_concerning(note: str) -> bool:
-    return bool(re.search(r"tamper|edit|illegib|blur|expired|mismatch|forg|alter", note or "", re.I))
 
 
 def stage_cross_check(sub, ctx):

@@ -51,7 +51,12 @@ Reply with ONLY a JSON object:
 {{"doc_type": "...", "confidence": 0-1,
   "legal_name": null, "trade_name": null, "gstin": null, "pan": null, "state": null, "address": null,
   "account_holder": null, "account_number": null, "ifsc": null, "bank_name": null,
-  "notes": "one short sentence on anything unusual (tampering, illegible, expired, mismatch)"}}"""
+  "red_flag": false,
+  "notes": "one short sentence describing the document"}}
+
+Set "red_flag" to true ONLY if you see a concrete problem: signs of editing/tampering, illegible key fields,
+an expired or cancelled registration, or the document belonging to a different entity than its own fields suggest.
+Routine advice (e.g. "should be verified on the portal") is NOT a red flag."""
 
 
 def extract_document(path: str, slot: str) -> dict:
@@ -101,7 +106,7 @@ def _rules_extract(path: str) -> dict:
         doc_type = "other"
     d = {"doc_type": doc_type, "confidence": 0.7 if t.strip() else 0.0,
          "legal_name": None, "trade_name": None, "gstin": None, "pan": None, "state": None, "address": None,
-         "account_holder": None, "account_number": None, "ifsc": None, "bank_name": None, "notes": None}
+         "account_holder": None, "account_number": None, "ifsc": None, "bank_name": None, "red_flag": False, "notes": None}
     if not t.strip():
         d["notes"] = "No machine-readable text (scanned image?) - needs AI or manual review"
         return d
