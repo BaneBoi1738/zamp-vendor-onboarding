@@ -17,6 +17,15 @@ DECISION_STYLE = {"Approved": ("success", "✅ APPROVED – vendor can be create
                   "Pending": ("warning", "🟠 PENDING – email drafted to the vendor with what to fix"),
                   "Rejected": ("error", "⛔ REJECTED – vendor blocked, internal alert raised")}
 UPLOADS = os.path.join(pipeline.DATA, "uploads")
+CHECK_LABELS = {
+    "completeness": "Missing field or document", "format": "Format issue (GSTIN / PAN / IFSC / email)",
+    "doc_type": "Wrong document uploaded", "doc_ai_flag": "AI flagged a document",
+    "pan_in_gstin": "GSTIN belongs to a different PAN", "state": "GSTIN state \u2260 declared state",
+    "gst_doc": "GSTIN on certificate \u2260 form", "name_gst": "Name \u2260 GST certificate",
+    "pan_doc": "PAN card \u2260 form", "bank_doc": "Cheque details \u2260 form",
+    "name_bank": "Bank account in another name", "dup_bank": "Bank account used by another vendor",
+    "dup_gstin": "GSTIN already registered", "dup_pan": "PAN already registered",
+}
 
 # ------------------------------------------------------------------ sidebar
 with st.sidebar:
@@ -162,9 +171,10 @@ with tab_dash:
             st.bar_chart(dc.reindex(["Approved", "Pending", "Rejected"]).fillna(0))
         with c2:
             st.markdown("**Most common issues (which checks catch problems)**")
-            iss = Counter(f"{f['check']} ({f['severity']})" for r in full for f in r["findings"] if f["severity"] != "pass")
+            iss = Counter((CHECK_LABELS.get(f["check"], f["check"]), f["severity"]) for r in full for f in r["findings"] if f["severity"] != "pass")
             if iss:
-                st.bar_chart(pd.Series(dict(iss.most_common(8))))
+                st.dataframe(pd.DataFrame([{"Issue caught": k[0], "Severity": f"{ICON[k[1]]} {k[1]}", "Times": v} for k, v in iss.most_common(10)]),
+                             hide_index=True, use_container_width=True)
             else:
                 st.caption("No issues found yet.")
 
