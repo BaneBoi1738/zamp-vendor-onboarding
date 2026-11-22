@@ -3,7 +3,8 @@
 A runnable process that takes a new vendor's registration form + documents (GST certificate, cancelled cheque, PAN card),
 checks them the way a procurement analyst would, decides **Approved / Pending / Rejected**, and drafts the right email.
 
-**Live app:** https://zamp-vendor-app-249bpvmgxnnw6n7feiqnqk.streamlit.app/
+**Live app:** https://zamp-vendor-app-249bpvmgxnnw6n7feiqnqk.streamlit.app/  
+**Demo video (5 min):** https://www.loom.com/share/89ca3ac0a89e4558b4d2bf613ba1f3c2
 
 ## Run it locally
 ```bash
